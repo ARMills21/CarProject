@@ -65,7 +65,7 @@ getQuestion = event => {
 }
 
 getAPI = Arr => {
-    
+    // This is where we will link the API's and code the ajax
 }
 
 getUserChoice = choice => {
