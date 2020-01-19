@@ -7,7 +7,25 @@ var questions = [
 
     {
         title: "What is the submodel?",
-        choice: ["stuff", "more stuff", "other stuff"]
+        choice: ["4dr Hatchback", "Cargo Minivan", "Coup",
+    "Passenger Van", "2dr Hatchback", "Cargo Van", "Crew Cab Pickup", "Regular Cap Pickup",
+    "2dr SUV", "Convertible", "Extended Cab Pickup", "Sedan", "4dr SUV", "Convertible SUV",
+    "Passenger Minivan", "Wagon"]
+    },
+    
+    {
+        title: "What Size of vehicle?",
+        choice: ["Compact", "Midsize", "Large"]
+    },
+    
+    {
+        title: "What kind of fuel type?",
+        choice: ["Electric", "Hybrid", "Natural gas", "Flex fuel", "Gas", "Diesel"]
+    },
+
+    {
+        title: "What kind of wheel drive?",
+        choice: ["All wheel drive", "Front wheel drive", "Four wheel drive", "Rear wheel drive"]
     }
 ]
 
