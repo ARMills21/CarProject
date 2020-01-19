@@ -1,8 +1,15 @@
 body, html {
     height: 100%;
-    margin: 0;
-    background-image: url("./road\ photo.jfif");        
-    background-size: cover;
-    background-position: center; /* Center and scale the image */
-    position: relative;
-    }
+    margin: 0;      
+  }
+
+  .hero {
+    background: url("./road\ photo.jpg") center / cover; 
+  }
+
+   /* need to add images for smaller devices - media is not working*/  
+@media (max-width: 1024px)  { .hero {background: black url("./road\ photo1024px.jpg") center / cover;}
+@media (max-width: 768px)  { .hero {background: black url("./road\ photo768px.jpg") center / cover;}
+
+
+}
