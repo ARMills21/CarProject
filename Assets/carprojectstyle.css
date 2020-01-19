@@ -1,0 +1,8 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    background-image: url("./road\ photo.jfif");        
+    background-size: cover;
+    background-position: center; /* Center and scale the image */
+    position: relative;
+    }
