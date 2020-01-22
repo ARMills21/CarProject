@@ -1,0 +1,17 @@
+body, html {
+    height: 100%;
+    margin: 0;      
+  }
+
+  .hero {
+    background: url("./road\ photo.jpg") center / cover; 
+  }
+
+/* images for smaller devices*/  
+@media (max-width: 1024px)  { .hero {background: black url("./road\ photo1024px.jpg") center / cover;}}
+@media (max-width: 768px)  { .hero {background: black url("./road\ photo768px.jpg") center / cover;}}
+
+#headContainer {
+font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+font-size: 72px;
+}
