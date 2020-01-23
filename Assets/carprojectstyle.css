@@ -1,35 +1,69 @@
-body, html {
-    height: 100%;
-    margin: 0;      
-  }
+*, *::before, *::after {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
 
-  .hero {
-    background: url("./newroadpic.jpg") center / cover; 
-  }
+
+body {  
+  padding: 0;
+  margin: 0;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  background: url(./newroadpic.jpg) center / cover;
+}
 
 /* images for smaller devices*/  
-@media (max-width: 1024px)  { .hero {background: black url("./newroadpic1024px.jpg") center / cover;}}
-@media (max-width: 768px)  { .hero {background: black url("./newroadpic768px.jpg") center / cover;}}
+@media (max-width: 1024px)  { .body {background: black url("./newroadpic1024px.jpg") center / cover;}}
+@media (max-width: 768px)  { .body {background: black url("./newroadpic768px.jpg") center / cover;}}
 
 #headContainer {
 font-family: Arial, Helvetica, sans-serif;
 font-size: 72px;
 color: whitesmoke;
+margin-top: 3rem;
 }
 
 #title{
   color: white;
-  width: 50%;
+  width: 30rem;
   margin-top: -30px;
   padding: 10px;
-  background-color: #6666ff;  
+  background-color: #ff3333;  
   margin-left: 30px;
+  text-align: center;
 }
 
 #centerbox{
-
+  background-color: white;
+  display: inherit;
+  text-align: center;
+  padding: 15px;
+  margin: 8rem 10rem 1rem 10rem;
+  border: 2px solid #ff3333
 }
 
-#find {
 
+h3 {
+font-size: 32px;
+align-items: center;
+font-style: italic;
+}
+
+#questions {
+font-size: 25px;
+font-style: italic;
+}
+
+#StartCarSelecter{
+  padding: 20px;
+}
+
+#start {
+  background-color: #0000ff;
+  font-size: 25px;
+  color: white;
+  padding: 10px;
+  margin-bottom: 15px;
 }
