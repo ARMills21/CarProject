@@ -11,7 +11,7 @@ body {
   width: 100vw;
   height: 100vh;
   justify-content: center;
-  background: url(./newroadpic.jpg) center / cover;
+  background: url(./newroadpic2.jpg) center / cover;
 }
 
 /* images for smaller devices*/  
@@ -35,12 +35,12 @@ margin-top: 3rem;
   text-align: center;
 }
 
-#centerbox{
+.centerbox{
   background-color: white;
-  display: inherit;
+  display: inline-block;
   text-align: center;
   padding: 15px;
-  margin: 8rem 10rem 1rem 10rem;
+  margin: 12px 20px 1rem 30rem;
   border: 2px solid #ff3333
 }
 
@@ -49,6 +49,8 @@ h3 {
 font-size: 32px;
 align-items: center;
 font-style: italic;
+color: white;
+
 }
 
 #questions {
@@ -65,5 +67,22 @@ font-style: italic;
   font-size: 25px;
   color: white;
   padding: 10px;
-  margin-bottom: 15px;
-}
+ }
+
+ #help {
+   text-align: right;
+   margin-right: 40px;
+
+ }
+
+ .questioncontainer{
+  background-color: white;
+  display: inline-block;
+  text-align: center;
+  padding: 15px;
+  margin: 12px 20px 1rem 30rem;
+  border: 2px solid #ff3333
+
+ }
+
+  

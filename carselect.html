@@ -11,18 +11,29 @@
 </head>
 <body>
     
-    <form>
-        
-        <div id="questions"></div><br>
-        
-            <select name="options" id="choices"></select>
-            <button type="submit" id="nextBtn">Next</button>
-    </form>
+    <body>
+  <div class="container" id="page">
 
-    <button id="submit">Get Results</button>
+    <div class="container columns is-mobile column is 5" id="headContainer">       
+        <h1 class="title is-1" id="title">Find the Best Vehicle for YOU!!</h1>
+      </div>
+    
+    
+      <div class="questioncontainer">
+        <form>              
+          <div id="questions"></div>
+          <select name="options" id="choices"></select><br>
+          <button type="submit" id="nextBtn">Next</button>
+        </form>
 
-    <div id="results"></div>
+        <button id="submit">Get Results</button>
+        <div id="results"></div>
+
+    </div>
+  </div>
+
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="carselect.js"></script>
-</body>
+    <script src="./Assets/carselect.js"></script>
+
+  </body>
 </html>
