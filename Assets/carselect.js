@@ -1,7 +1,7 @@
 var questions = [
     
     {
-        title: "What is the car type submodel?",
+        title: "What type of vehicle are you looking for?",
         choice: ["4dr Hatchback", "Cargo Minivan", "Coup",
     "Passenger Van", "2dr Hatchback", "Cargo Van", "Crew Cab Pickup", "Regular Cap Pickup",
     "2dr SUV", "Convertible", "Extended Cab Pickup", "Sedan", "4dr SUV", "Convertible SUV",
