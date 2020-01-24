@@ -4,22 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">  
+    <link rel="stylesheet" href="./Assets/carprojectstyle.css"> 
+
+    <title>Car Project-select car page</title>
 </head>
 <body>
+  
+  <div class="container" id="page">
+
+    <div class="container columns is-mobile column is 5" id="headContainer">       
+        <h1 class="title is-1" id="title">Find the Best Vehicle for YOU!!</h1>
+      </div>
     
-    <form>
-        
-        <div id="questions"></div><br>
-        
-            <select name="options" id="choices"></select>
-            <button type="submit" id="nextBtn">Next</button>
-    </form>
+      <div class="container help">
+        <div class="columns is-mobile"> 
+          <div class="column is-12">
+            <h3>We can help you find a vehicle that fits your needs.</h3>
+          </div>
+        </div>
+      </div>
 
-    <button id="submit">Get Results</button>
+    
+      <div class="questioncontainer">
+        <form>              
+          <div id="questions"></div>
+          <select name="options" id="choices"></select><br>
+          <button type="submit" id="nextBtn">Next</button>
+        </form>
 
-    <div id="results"></div>
+       
+        <div id="results"></div>
+
+    </div>
+  </div>
+
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="carselect.js"></script>
-</body>
+    <script src="./Assets/carselect.js"></script>
+
+  </body>
 </html>
