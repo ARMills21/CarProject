@@ -1,11 +1,10 @@
 var questions = [
     
     {
-        title: "What type of vehicle are you looking for?",
-        choice: ["4dr Hatchback", "Cargo Minivan", "Coup",
-    "Passenger Van", "2dr Hatchback", "Cargo Van", "Crew Cab Pickup", "Regular Cap Pickup",
-    "2dr SUV", "Convertible", "Extended Cab Pickup", "Sedan", "4dr SUV", "Convertible SUV",
-    "Passenger Minivan", "Wagon"]
+        title: "What is the car type submodel?",
+        choice: ["2dr Hatchback", "4dr Hatchback", "Sedan", "Coup", "Wagon", "Convertible",
+        "Regular Pickup", "Crew Cab Pickup", "Extended Cab Pickup", "Passenger Van", "Cargo Minivan",
+        "Cargo Van", "Passenger Minivan", "2dr SUV", "4dr SUV", "Convertible SUV"]
     },
     {
         title: "What Size of vehicle?",
@@ -23,44 +22,44 @@ var questions = [
     }
 ]
 
-var currentQuestion = 1;
-var userChoices = [];
+var currentQuestion = 1; // starting at the current question
+var userChoices = []; // leaving the value blank so it can input the user choice
 
-getFirstQuestion = () => {
-    const firstChoices = questions[0].choice;
-    $("#questions").html(questions[0].title);
-    for(let i=0;i<firstChoices.length; i++) {
-        let qOption = $("<option>").text(firstChoices[i]);
-        qOption.addClass("choices");
-        qOption.attr("value", firstChoices[i]);
-        $("#choices").append(qOption);
+getFirstQuestion = () => { // geting the first question
+    const firstChoices = questions[0].choice; // setting it to the choices array
+    $("#questions").html(questions[0].title); // putting the first question to the DOM
+    for(let i=0;i<firstChoices.length; i++) { // setting the length of the choices
+        let qOption = $("<option>").text(firstChoices[i]); // setting the options tag
+        qOption.addClass("choices"); // adding the class to the choicses
+        qOption.attr("value", firstChoices[i]); // setting the value of the option
+        $("#choices").append(qOption); // putting it on the next line of choices on the DOM
     };
 };
 
-getQuestion = event => {
-    event.preventDefault();
+getQuestion = event => { // adding a event to the questions so it knows what to do
+    event.preventDefault(); // preventing the choices to be removed when refreshed or changed to a different page
 
-    const userInput = $("#choices option:selected").val();
-    getUserChoice(userInput);
+    const userInput = $("#choices option:selected").val(); // adding a bucket for the users choices and the value to be empty so selected is add to value
+    getUserChoice(userInput); // to pull the users choices
 
-    if(currentQuestion >= 4) {
+    if(currentQuestion >= 4) { // making it where when the user answers all the questions that it goes to the result page
         getResults(userChoices);
     }
-    else {
-        $("#questions").html("");
+    else { // clearing out what is on the DOM currently
+        $("#questions").html(""); 
         $("#choices").html("");
 
-        let currentChoices = questions[currentQuestion].choice;
+        let currentChoices = questions[currentQuestion].choice; // setting it to the current question it is on 
 
-        $("#questions").html(questions[currentQuestion].title);
+        $("#questions").html(questions[currentQuestion].title); // setting it the current question to the DOM
 
-        for(let i = 0; i<currentChoices.length; i++) {
+        for(let i = 0; i<currentChoices.length; i++) { // making it do the same as the first question
             let qOption = $("<option>").text(currentChoices[i]);
             qOption.addClass("choices");
             qOption.attr("value", currentChoices[i]);
-            $("#choices").append(qOption);
+            $("#choices").append(qOption); 
         }
-        currentQuestion++;
+        currentQuestion++; // increments current question so it can go to the next question
     }
 }
 
@@ -68,15 +67,15 @@ getAPI = Arr => {
     // This is where we will link the API's and code the ajax
 }
 
-getUserChoice = choice => {
+getUserChoice = choice => { // keeping the user choices to a array
     userChoices.push(choice);
     console.log(userChoices);
 };
 
-getResults = choiceArr => {
+getResults = choiceArr => { // making it pull all the users choices and taking it to the results page
     window.location.href = "results.html";
     getAPI (choiceArr);
 };
 
-getFirstQuestion();
+getFirstQuestion(); // adding the button to go to the next question after selected
 $(document).on("click", "#nextBtn", getQuestion);
