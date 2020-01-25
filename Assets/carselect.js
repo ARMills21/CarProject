@@ -1,5 +1,5 @@
 var questions = [
-    
+
     {
         title: "What is the body style of the car?",
         choice: ["Hatchback", "Sedan", "Coupe", "Convertible",
@@ -16,7 +16,7 @@ var questions = [
         title: "What Size of vehicle?",
         choice: ["Compact", "Midsize", "Large", "Sports Utility", "Small Staiton Wagon"]
     },
-    
+
     {
         title: "What kind of fuel type?",
         choice: ["Electric", "Flex fuel", "Premium Unleaded", "Regular Unleaded", "Diesel"] // premium unleaded is gas 
@@ -26,19 +26,52 @@ var questions = [
         title: "What kind of wheel drive?",
         choice: ["All wheel drive", "Front wheel drive", "Four wheel drive", "Rear wheel drive"]
     }
-];
+]
 
-var currentQuestion = 1; // starting at the current question
-var userChoices = []; // leaving the value blank so it can input the user choice
+var currentQuestion = 1;
+var userChoices = [];
 
-getFirstQuestion = () => { // geting the first question
-    const firstChoices = questions[0].choice; // setting it to the choices array
-    $("#questions").html(questions[0].title); // putting the first question to the DOM
-    for(let i=0;i<firstChoices.length; i++) { // setting the length of the choices
-        let qOption = $("<option>").text(firstChoices[i]); // setting the options tag
-        qOption.addClass("choices"); // adding the class to the choicses
-        qOption.attr("value", firstChoices[i]); // setting the value of the option
-        $("#choices").append(qOption); // putting it on the next line of choices on the DOM
+
+/**
+* $(document).on("click", "#nextBtn", getQuestion);
+* Every programming language that can make a HTTP request and parse XML is a suitable
+* client for this API; here is a sample GET request:
+* http://www.carimagery.com/api.asmx/GetImageUrl?searchTerm=ford+fiesta
+* This returns the following XML
+* <string xmlns="http://carimagery.com/">
+* http://www.regcheck.org.uk/image.aspx/@Zm9yZCBmaWVzdGE=
+* </string>
+* If you prefer to use a HTTPS source for the image, then you can simpl
+*/
+function getcarpixbymodelXML(model, placeholder = 'carsample') {
+    var xmlpull = "http://www.carimagery.com/api.asmx/GetImageUrl?searchTerm=" + model;
+    $.get(xmlpull)
+        .then(function (response) {
+            var xmlparser = new X2JS();
+            var carresponse = xmlparser.xml2json(response);
+
+            var $img = $("#"+placeholder);
+
+            if ($img.length) {
+                $img.attr('src', carresponse.string.__text);
+                $img.css('display', 'block');
+            }
+
+
+            // $("#carsample").attr('src', carresponse.string.__text)
+
+        })
+}
+getcarpixbymodelXML("ford+fiesta", "carsample");
+
+getFirstQuestion = () => {
+    const firstChoices = questions[0].choice;
+    $("#questions").html(questions[0].title);
+    for (let i = 0; i < firstChoices.length; i++) {
+        let qOption = $("<option>").text(firstChoices[i]);
+        qOption.addClass("choices");
+        qOption.attr("value", firstChoices[i]);
+        $("#choices").append(qOption);
     };
 };
 
@@ -59,7 +92,7 @@ getQuestion = event => { // adding a event to the questions so it knows what to 
 
         $("#questions").html(questions[currentQuestion].title); // setting it the current question to the DOM
 
-        for(let i = 0; i<currentChoices.length; i++) { // making it do the same as the first question
+        for(let i = 0; i < currentChoices.length; i++) { // making it do the same as the first question
             let qOption = $("<option>").text(currentChoices[i]);
             qOption.addClass("choices");
             qOption.attr("value", currentChoices[i]);
@@ -72,14 +105,22 @@ getQuestion = event => { // adding a event to the questions so it knows what to 
 getAPI = Arr => {
     // This is where we will link the API's and code the ajax
 
+    function trimResults(trim, doors, body, fuel, drive){
     var queryURL = "https://www.carqueryapi.com/api/0.3/?callback=?&cmd=getTrims&model_trim=" 
     + trim + "model_doors=" + doors + "model_body=" + body + "model_engine_fuel=" + fuel + "model_drive=" + drive
+    $.get(queryURL)
+        .then(function(response){
+            console.log(response)
+        })
+    }
 
 
     // $.ajax({
     //     url: queryURL,
     //     method= "GET"
     // });
+
+    
 
     var doors = title[1]
     var body = title[2]
@@ -95,7 +136,7 @@ getUserChoice = choice => { // keeping the user choices to a array
 
 getResults = choiceArr => { // making it pull all the users choices and taking it to the results page
     window.location.href = "results.html";
-    getAPI (choiceArr);
+    getAPI(choiceArr);
 };
 
 getFirstQuestion(); // adding the button to go to the next question after selected
