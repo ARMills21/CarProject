@@ -1,5 +1,5 @@
 var questions = [
-    
+
     {
         title: "What is the car type submodel?",
         choice: ["Hatchback", "Sedan", "Coup", "Convertible",
@@ -15,7 +15,7 @@ var questions = [
         title: "What Size of vehicle?",
         choice: ["Compact", "Midsize", "Large", "Sports Utility", "Small Staiton Wagon"]
     },
-    
+
     {
         title: "What kind of fuel type?",
         choice: ["Electric", "Flex fuel", "Premium Unleaded", "Diesel"] // premium unleaded is gas 
@@ -38,7 +38,8 @@ getFirstQuestion = () => { // geting the first question
         qOption.addClass("choices"); // adding the class to the choicses
         qOption.attr("value", firstChoices[i]); // setting the value of the option
         $("#choices").append(qOption); // putting it on the next line of choices on the DOM
-    };
+
+    }
 };
 
 getQuestion = event => { // adding a event to the questions so it knows what to do
@@ -67,9 +68,42 @@ getQuestion = event => { // adding a event to the questions so it knows what to 
         currentQuestion++; // increments current question so it can go to the next question
     }
 }
+    /**
+* $(document).on("click", "#nextBtn", getQuestion);
+* Every programming language that can make a HTTP request and parse XML is a suitable
+* client for this API; here is a sample GET request:
+* http://www.carimagery.com/api.asmx/GetImageUrl?searchTerm=ford+fiesta
+* This returns the following XML
+* <string xmlns="http://carimagery.com/">
+* http://www.regcheck.org.uk/image.aspx/@Zm9yZCBmaWVzdGE=
+* </string>
+* If you prefer to use a HTTPS source for the image, then you can simpl
+*/
+function getcarpixbymodelXML(model, placeholder = 'carsample') {
+    var xmlpull = "http://www.carimagery.com/api.asmx/GetImageUrl?searchTerm=" + model;
+    $.get(xmlpull)
+        .then(function (response) {
+            var xmlparser = new X2JS();
+            var carresponse = xmlparser.xml2json(response);
+
+            var $img = $("#"+placeholder);
+
+            if ($img.length) {
+                $img.attr('src', carresponse.string.__text);
+                $img.css('display', 'block');
+            }
+
+
+            // $("#carsample").attr('src', carresponse.string.__text)
+
+        });
+}
+getcarpixbymodelXML("ford+fiesta", "carsample");
 
 getAPI = Arr => {
     // This is where we will link the API's and code the ajax
+
+
 }
 
 getUserChoice = choice => { // keeping the user choices to a array
@@ -79,7 +113,7 @@ getUserChoice = choice => { // keeping the user choices to a array
 
 getResults = choiceArr => { // making it pull all the users choices and taking it to the results page
     window.location.href = "results.html";
-    getAPI (choiceArr);
+    getAPI(choiceArr);
 };
 
 getFirstQuestion(); // adding the button to go to the next question after selected
