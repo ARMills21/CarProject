@@ -3,8 +3,7 @@ var questions = [
     {
         title: "What is the car type submodel?",
         choice: ["Hatchback", "Sedan", "Coup", "Convertible",
-        "Pickup", "Van",
-        "Cargo Van", "SUV"]
+        "Pickup", "Van", "Cargo Van", "SUV"]
     },
 
     {
