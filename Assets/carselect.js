@@ -1,7 +1,7 @@
 var questions = [
     
     {
-        title: "What is the car type submodel?",
+        title: "What is the body style of the car?",
         choice: ["Hatchback", "Sedan", "Coup", "Convertible",
         "Pickup", "Van",
         "Cargo Van", "SUV"]
@@ -26,7 +26,7 @@ var questions = [
         title: "What kind of wheel drive?",
         choice: ["All wheel drive", "Front wheel drive", "Four wheel drive", "Rear wheel drive"]
     }
-]
+];
 
 var currentQuestion = 1; // starting at the current question
 var userChoices = []; // leaving the value blank so it can input the user choice
@@ -48,7 +48,7 @@ getQuestion = event => { // adding a event to the questions so it knows what to 
     const userInput = $("#choices option:selected").val(); // adding a bucket for the users choices and the value to be empty so selected is add to value
     getUserChoice(userInput); // to pull the users choices
 
-    if(currentQuestion >= 4) { // making it where when the user answers all the questions that it goes to the result page
+    if(currentQuestion >= 5) { // making it where when the user answers all the questions that it goes to the result page
         getResults(userChoices);
     }
     else { // clearing out what is on the DOM currently
