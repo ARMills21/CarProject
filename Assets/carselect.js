@@ -2,18 +2,24 @@ var questions = [
     
     {
         title: "What is the car type submodel?",
-        choice: ["2dr Hatchback", "4dr Hatchback", "Sedan", "Coup", "Wagon", "Convertible",
-        "Regular Pickup", "Crew Cab Pickup", "Extended Cab Pickup", "Passenger Van", "Cargo Minivan",
-        "Cargo Van", "Passenger Minivan", "2dr SUV", "4dr SUV", "Convertible SUV"]
+        choice: ["Hatchback", "Sedan", "Coup", "Convertible",
+        "Pickup", "Van",
+        "Cargo Van", "SUV"]
     },
+
+    {
+        title: "How many doors?",
+        choice: ["Two Door", "Four Door"]
+    },
+
     {
         title: "What Size of vehicle?",
-        choice: ["Compact", "Midsize", "Large"]
+        choice: ["Compact", "Midsize", "Large", "Sports Utility", "Small Staiton Wagon"]
     },
     
     {
         title: "What kind of fuel type?",
-        choice: ["Electric", "Hybrid", "Natural gas", "Flex fuel", "Gas", "Diesel"]
+        choice: ["Electric", "Flex fuel", "Premium Unleaded", "Diesel"] // premium unleaded is gas 
     },
 
     {
