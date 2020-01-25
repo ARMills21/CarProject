@@ -4,20 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Car Selections Questions</title>
+    <link rel="stylesheet" href="./Assets/carprojectstyle.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">   
+
+    <title>Car Project-select car page</title>
 </head>
 <body>
     
-    <form>
-        
-        <div id="questions"></div><br>
-        
-            <select name="options" id="choices"></select>
-            <button type="submit" id="nextBtn">Next</button>
-    </form>
+    <body>
+  <div class="container" id="page">
 
-    <div id="results"></div>
+    <div class="container columns is-mobile column is 5" id="headContainer">       
+        <h1 class="title is-1" id="title">Find the Best Vehicle for YOU!!</h1>
+      </div>
+    
+    
+      <div class="questioncontainer">
+        <form>              
+          <div id="questions"></div>
+          <select name="options" id="choices"></select><br>
+          <button type="submit" id="nextBtn">Next</button>
+        </form>
+        
+        <div id="results"></div>
+
+    </div>
+  </div>
+
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="carselect.js"></script>
-</body>
+    <script src="./Assets/carselect.js"></script>
+
+  </body>
 </html>
