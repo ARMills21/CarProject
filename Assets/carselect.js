@@ -2,7 +2,7 @@ var questions = [
     
     {
         title: "What is the body style of the car?",
-        choice: ["Hatchback", "Sedan", "Coup", "Convertible",
+        choice: ["Hatchback", "Sedan", "Coupe", "Convertible",
         "Pickup", "Van",
         "Cargo Van", "SUV"]
     },
@@ -71,21 +71,22 @@ getQuestion = event => { // adding a event to the questions so it knows what to 
 
 getAPI = Arr => {
     // This is where we will link the API's and code the ajax
+
+    var queryURL = "https://www.carqueryapi.com/api/0.3/?callback=?&cmd=getTrims&model_trim=" 
+    + trim + "model_doors=" + doors + "model_body=" + body + "model_engine_fuel=" + fuel + "model_drive=" + drive
+
+
+    // $.ajax({
+    //     url: queryURL,
+    //     method= "GET"
+    // });
+
     var doors = title[1]
     var body = title[2]
     var fuel = title[3]
     var drive = title[4]
     var trim = title[0]
-    
-    var queryURL = "https://www.carqueryapi.com/api/0.3/?callback=?&cmd=getTrims&model_trim=" 
-    + trim + "model_doors=" + doors + "model_body=" + body + "model_engine_fuel=" + fuel + "model_drive=" + drive
-
-
-    $.ajax({
-        url: queryURL,
-        method= "GET"
-    })
-}
+};
 
 getUserChoice = choice => { // keeping the user choices to a array
     userChoices.push(choice);
