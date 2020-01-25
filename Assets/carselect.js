@@ -47,7 +47,7 @@ getQuestion = event => { // adding a event to the questions so it knows what to 
     const userInput = $("#choices option:selected").val(); // adding a bucket for the users choices and the value to be empty so selected is add to value
     getUserChoice(userInput); // to pull the users choices
 
-    if(currentQuestion >= 4) { // making it where when the user answers all the questions that it goes to the result page
+    if(currentQuestion >= 5) { // making it where when the user answers all the questions that it goes to the result page
         getResults(userChoices);
     }
     else { // clearing out what is on the DOM currently
