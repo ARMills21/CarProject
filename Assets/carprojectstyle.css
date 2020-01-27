@@ -11,7 +11,7 @@ body {
   width: 100vw;
   height: 100vh;
   justify-content: center;  
-  background: url(./newroadpic2.jpg) center / cover;
+  background: url(./roadpic.jpg) center / cover;
 }
 
 /* images for smaller devices*/  
@@ -30,10 +30,10 @@ margin-top: 3rem;
 }
 
 #title{
-  color: white; 
+  color: black; 
   margin-top: 2rem;
   padding: 10px;
-  background-color: #ff3333;    
+  background-color: floralwhite;    
   text-align: center;
 }
 
@@ -108,6 +108,10 @@ margin: 1rem;
   color: white; 
   padding: 10px;   
   text-align: center;
+}
+
+.groupimage{
+  display: contents;
 }
 
  
