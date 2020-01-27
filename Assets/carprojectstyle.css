@@ -64,8 +64,10 @@ color: white;
 }
 
 #questions {
-font-size: 25px;
+font-size: 30px;
 font-style: italic;
+background-color: white;
+font-weight: 600;
 }
 
 #StartCarSelecter{
@@ -91,11 +93,14 @@ font-style: italic;
  }
 
  .questioncontainer{
-  background-color: white;
-  display: inline-table;
+  display: inline-flex;
   text-align: center;
-  padding: 15px;  
-  border: 2px solid #ff3333
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+   width: inherit;
+   padding-left: 12px;
+   padding-right: 12px;
+   padding-bottom: 12px;
    }
 
  #choices {
