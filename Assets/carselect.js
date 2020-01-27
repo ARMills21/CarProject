@@ -8,7 +8,7 @@ var questions = [
 
     {
         title: "How many doors?",
-        choice: ["Two Door", "Four Door"]
+        choice: ["2", "4"]
     },
 
     {
@@ -18,12 +18,12 @@ var questions = [
 
     {
         title: "What kind of fuel type?",
-        choice: ["Electric", "Flex fuel", "Premium Unleaded", "Diesel"] // premium unleaded is gas 
+        choice: ["Electric", "Flex fuel", "Gasoline", "Diesel"] // premium unleaded is gas 
     },
 
     {
         title: "What kind of wheel drive?",
-        choice: ["All wheel drive", "Front wheel drive", "Four wheel drive", "Rear wheel drive"]
+        choice: ["AWD", "Front", "4WD", "Rear"]
     }
 ]
 
@@ -100,20 +100,31 @@ function getcarpixbymodelXML(model, placeholder = 'carsample') {
 }
 getcarpixbymodelXML("ford+fiesta", "carsample");
 
-getAPI = Arr => {
-    // This is where we will link the API's and code the ajax
-
-
-}
 
 getUserChoice = choice => { // keeping the user choices to a array
     userChoices.push(choice);
     console.log(userChoices);
 };
 
-getResults = choiceArr => { // making it pull all the users choices and taking it to the results page
-    window.location.href = "results.html";
-    getAPI(choiceArr);
+getResults = Arr => {
+
+    $(".questionbox").empty();
+        // This is where we will link the API's and code the ajax
+  var queryURL = "https://www.carqueryapi.com/api/0.3/?callback=?&cmd=getTrims&body=" + Arr[0] + "&doors=" + Arr[1] + "&fuel_type=" + Arr[3] + "&drive=" + Arr[4];
+
+  console.log(queryURL);
+
+  $.ajax({
+      url: queryURL,
+      method: "GET"
+  })
+
+  .then(function(response) {
+    console.log(response);
+  })
+
+
+ // making it pull all the users choices and taking it to the results page
 };
 
 getFirstQuestion(); // adding the button to go to the next question after selected
