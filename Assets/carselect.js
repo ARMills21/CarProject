@@ -3,8 +3,8 @@ var questions = [
     {
         title: "What is the body style of the car?",
         choice: ["Hatchback", "Sedan", "Coupe", "Convertible",
-        "Pickup", "Van",
-        "Cargo Van", "SUV"]
+            "Pickup", "Van",
+            "Cargo Van", "SUV"]
     },
 
     {
@@ -43,26 +43,24 @@ var userChoices = [];
 * </string>
 * If you prefer to use a HTTPS source for the image, then you can simpl
 */
-function getcarpixbymodelXML(model, placeholder = 'carsample') {
+function getcarpixbymodelXML(model, placeholder) {
     var xmlpull = "http://www.carimagery.com/api.asmx/GetImageUrl?searchTerm=" + model;
     $.get(xmlpull)
         .then(function (response) {
             var xmlparser = new X2JS();
             var carresponse = xmlparser.xml2json(response);
 
-            var $img = $("#"+placeholder);
+            var $img = $("#" + placeholder);
 
             if ($img.length) {
                 $img.attr('src', carresponse.string.__text);
                 $img.css('display', 'block');
             }
 
-
             // $("#carsample").attr('src', carresponse.string.__text)
 
         })
 }
-getcarpixbymodelXML("ford+fiesta", "carsample");
 
 getFirstQuestion = () => {
     const firstChoices = questions[0].choice;
@@ -81,22 +79,22 @@ getQuestion = event => { // adding a event to the questions so it knows what to 
     const userInput = $("#choices option:selected").val(); // adding a bucket for the users choices and the value to be empty so selected is add to value
     getUserChoice(userInput); // to pull the users choices
 
-    if(currentQuestion >= 5) { // making it where when the user answers all the questions that it goes to the result page
+    if (currentQuestion >= 5) { // making it where when the user answers all the questions that it goes to the result page
         getResults(userChoices);
     }
     else { // clearing out what is on the DOM currently
-        $("#questions").html(""); 
+        $("#questions").html("");
         $("#choices").html("");
 
         let currentChoices = questions[currentQuestion].choice; // setting it to the current question it is on 
 
         $("#questions").html(questions[currentQuestion].title); // setting it the current question to the DOM
 
-        for(let i = 0; i < currentChoices.length; i++) { // making it do the same as the first question
+        for (let i = 0; i < currentChoices.length; i++) { // making it do the same as the first question
             let qOption = $("<option>").text(currentChoices[i]);
             qOption.addClass("choices");
             qOption.attr("value", currentChoices[i]);
-            $("#choices").append(qOption); 
+            $("#choices").append(qOption);
         }
         currentQuestion++; // increments current question so it can go to the next question
     }
@@ -105,13 +103,13 @@ getQuestion = event => { // adding a event to the questions so it knows what to 
 getAPI = Arr => {
     // This is where we will link the API's and code the ajax
 
-    function trimResults(trim, doors, body, fuel, drive){
-    var queryURL = "https://www.carqueryapi.com/api/0.3/?callback=?&cmd=getTrims&model_trim=" 
-    + trim + "model_doors=" + doors + "model_body=" + body + "model_engine_fuel=" + fuel + "model_drive=" + drive
-    $.get(queryURL)
-        .then(function(response){
-            console.log(response)
-        })
+    function trimResults(trim, doors, body, fuel, drive) {
+        var queryURL = "https://www.carqueryapi.com/api/0.3/?callback=?&cmd=getTrims&model_trim="
+            + trim + "model_doors=" + doors + "model_body=" + body + "model_engine_fuel=" + fuel + "model_drive=" + drive
+        $.get(queryURL)
+            .then(function (response) {
+                console.log(response)
+            })
     }
 
 
@@ -120,7 +118,7 @@ getAPI = Arr => {
     //     method= "GET"
     // });
 
-    
+
 
     var doors = title[1]
     var body = title[2]
@@ -141,3 +139,5 @@ getResults = choiceArr => { // making it pull all the users choices and taking i
 
 getFirstQuestion(); // adding the button to go to the next question after selected
 $(document).on("click", "#nextBtn", getQuestion);
+
+getcarpixbymodelXML('ford+fiesta', 'car-image-placeholder')
