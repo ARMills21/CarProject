@@ -114,7 +114,7 @@ getAPI = Arr => {
     "&model_engine_fuel=" + fuel + 
     "&model_drive=" + drive
 
-  console.log(trimResults);
+  console.log(queryURL);
     
   $.ajax({
     url: queryURL,
