@@ -7,11 +7,16 @@
 body {  
   padding: 0;
   margin: 0;
-  display: flex;
-  width: 100vw;
+  /* width: 100vw; */
   height: 100vh;
   justify-content: center;  
-  background: url(./roadpic.jpg) center / cover;
+  /* background: url(./roadpic.jpg) center / cover; */
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .page{
@@ -20,9 +25,13 @@ body {
   display: flex;
 }
 
+.hero{
+  background: black url(./roadpic.jpg) center / cover;
+}
+
 /* images for smaller devices*/  
-@media (max-width: 1024px)  { .body {background: black url("./newroadpic1024px.jpg") center / cover;}}
-@media (max-width: 768px)  { .body {background: black url("./newroadpic768px.jpg") center / cover;}}
+@media (max-width: 1024px)  { .hero {background: black url("./roadpic.jpg") center / cover;}}
+@media (max-width: 768px)  { .hero {background: black url("./roadpic768px.jpg") center / cover;}}
 
 .container{ 
   display: inline;
@@ -35,13 +44,20 @@ color: white;
 margin-top: 3rem;
 }
 
-#title{
+#title {
   color: black; 
   margin-top: 2rem;
   padding: 10px;
   background-color: white;    
   text-align: center;
+  
 }
+
+.getstarted {
+  background-color: white;
+  padding-bottom: 12px;
+  display: inline-block;
+  }
 
 .centerbox {
   display: inline-flex;
