@@ -3,17 +3,12 @@ var questions = [
     {
         title: "What is the body style of the car?",
         choice: ["Hatchback", "Sedan", "Coupe", "Convertible",
-            "Pickup", "Van", "Cargo Van", "SUV"]
+            "Pickup", "Van", "Minian", "SUV"]
     },
 
     {
         title: "How many doors?",
-        choice: ["Two Door", "Four Door"]
-    },
-
-    {
-        title: "What Size of vehicle?",
-        choice: ["Compact", "Midsize", "Large", "Sports Utility", "Small Staiton Wagon"]
+        choice: ["2", "4"]
     },
 
     {
@@ -23,7 +18,7 @@ var questions = [
 
     {
         title: "What kind of wheel drive?",
-        choice: ["All wheel drive", "Front wheel drive", "Four wheel drive", "Rear wheel drive"]
+        choice: ["AWD", "Front", "4WD", "Rear"]
     }
 ]
 
@@ -78,8 +73,9 @@ getQuestion = event => { // adding a event to the questions so it knows what to 
     const userInput = $("#choices option:selected").val(); // adding a bucket for the users choices and the value to be empty so selected is add to value
     getUserChoice(userInput); // to pull the users choices
 
-    if (currentQuestion >= 5) { // making it where when the user answers all the questions that it goes to the result page
-        getResults(userChoices);
+
+    if (currentQuestion >= 4) { // making it where when the user answers all the questions that it goes to the result page
+        getResults(userChoices[i]);
     }
     else { // clearing out what is on the DOM currently
         $("#questions").html("");
@@ -97,41 +93,43 @@ getQuestion = event => { // adding a event to the questions so it knows what to 
         }
         currentQuestion++; // increments current question so it can go to the next question
     }
+    getAPI();
 }
+
 
 getAPI = Arr => {
     // This is where we will link the API's and code the ajax
-    var  trim = questions[0];
-    var doors = questions[1];
-    var body = questions[2];
-    var fuel = questions[3];
-    var drive = questions[4];
+    var  trim = userChoices[0];
+    var doors = userChoices[1];
+    var fuel = userChoices[2];
+    var drive = userChoices[3];
+    for(let i = 0; i < userChoices.length; i++){
+    console.log('choice ' + userChoices[i])}
+    var queryURL = "https://www.carqueryapi.com/api/0.3/?callback=&cmd=getTrims" +
+    "&body=" + trim + 
+    "&doors=" + doors + 
+    "&fuel_type=" + fuel + 
+    "&drive=" + drive
 
-    function trimResults() {
-    var queryURL = "https://www.carqueryapi.com/api/0.3/?callback=?&cmd=getTrims&model_trim=" + trim + 
-    "&model_doors=" + doors + 
-    "&model_body=" + body + 
-    "&model_engine_fuel=" + fuel + 
-    "&model_drive=" + drive
-
-  console.log(queryURL);
+  console.log(encodeURI(queryURL));
     
   $.ajax({
-    url: queryURL,
+    url: encodeURI(queryURL),
     jsonp: "$jsonp",
     dataType: "jsonp"
   }).done(function(data) {
-    console.log("Request received: " + data);
-  });
-    };
-   trimResults(trim, doors, body, fuel, drive); {
-            }
-};
+    var data = JSON.parse(this.displayResults)
+    data.forEach(trim => {
+    console.log("Request received: " + userChoices);
+
+})})};
 
 getUserChoice = choice => { // keeping the user choices to a array
     userChoices.push(choice);
     console.log(userChoices);
 };
+
+getAPI();
 
 getResults = choiceArr => { // making it pull all the users choices and taking it to the results page
     window.location.href = "results.html";
@@ -143,4 +141,3 @@ $(document).on("click", "#nextBtn", getQuestion);
 
 getcarpixbymodelXML('ford+fiesta', 'car-image-placeholder');
 
-getAPI(getResults);
