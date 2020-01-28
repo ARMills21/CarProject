@@ -7,16 +7,31 @@
 body {  
   padding: 0;
   margin: 0;
-  display: flex;
-  width: 100vw;
+  /* width: 100vw; */
   height: 100vh;
   justify-content: center;  
-  background: url(./roadpic.jpg) center / cover;
+  /* background: url(./roadpic.jpg) center / cover; */
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page{
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.hero{
+  background: black url(./roadpic.jpg) center / cover;
 }
 
 /* images for smaller devices*/  
-@media (max-width: 1024px)  { .body {background: black url("./newroadpic1024px.jpg") center / cover;}}
-@media (max-width: 768px)  { .body {background: black url("./newroadpic768px.jpg") center / cover;}}
+@media (max-width: 1024px)  { .hero {background: black url("./roadpic.jpg") center / cover;}}
+@media (max-width: 768px)  { .hero {background: black url("./roadpic768px.jpg") center / cover;}}
 
 .container{ 
   display: inline;
@@ -29,13 +44,20 @@ color: white;
 margin-top: 3rem;
 }
 
-#title{
+#title {
   color: black; 
   margin-top: 2rem;
   padding: 10px;
   background-color: white;    
   text-align: center;
+  
 }
+
+.getstarted {
+  background-color: white;
+  padding-bottom: 12px;
+  display: inline-block;
+  }
 
 .centerbox {
   display: inline-flex;
@@ -58,8 +80,10 @@ color: white;
 }
 
 #questions {
-font-size: 25px;
+font-size: 30px;
 font-style: italic;
+background-color: white;
+font-weight: 600;
 }
 
 #StartCarSelecter{
@@ -71,8 +95,7 @@ font-style: italic;
   font-size: 25px;
   color: white;  
   inline-size: auto;
-  padding: 0:
-
+  padding: 0;
  }
 
 .startbtn{
@@ -86,11 +109,14 @@ font-style: italic;
  }
 
  .questioncontainer{
-  background-color: white;
-  display: inline-table;
+  display: inline-flex;
   text-align: center;
-  padding: 15px;  
-  border: 2px solid #ff3333
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+   width: inherit;
+   padding-left: 12px;
+   padding-right: 12px;
+   padding-bottom: 12px;
    }
 
  #choices {
@@ -110,6 +136,14 @@ padding: 1rem;
 margin: 1rem;
 }
 
+.box{
+ margin: 12px!important;
+}
+
+.tile.is-child{
+  margin: 12px!important;
+}
+
 #resultstitle {
   color: white; 
   padding: 10px;   
@@ -117,6 +151,10 @@ margin: 1rem;
 }
 
 .centerbox {
+  background-color: white;
+}
+
+.footer {
   background-color: white;
 }
 
