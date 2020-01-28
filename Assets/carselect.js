@@ -3,8 +3,7 @@ var questions = [
     {
         title: "What is the body style of the car?",
         choice: ["Hatchback", "Sedan", "Coupe", "Convertible",
-            "Pickup", "Van",
-            "Cargo Van", "SUV"]
+            "Pickup", "Van", "Cargo Van", "SUV"]
     },
 
     {
@@ -19,7 +18,7 @@ var questions = [
 
     {
         title: "What kind of fuel type?",
-        choice: ["Electric", "Flex fuel", "Premium Unleaded", "Regular Unleaded", "Diesel"] // premium unleaded is gas 
+        choice: ["Electric", "Flex fuel", "Premium Unleaded", "Regular Unleaded", "Diesel"] // premium and regular unleaded is gas 
     },
 
     {
@@ -102,29 +101,31 @@ getQuestion = event => { // adding a event to the questions so it knows what to 
 
 getAPI = Arr => {
     // This is where we will link the API's and code the ajax
+    var  trim = questions[0];
+    var doors = questions[1];
+    var body = questions[2];
+    var fuel = questions[3];
+    var drive = questions[4];
 
-    function trimResults(trim, doors, body, fuel, drive) {
-        var queryURL = "https://www.carqueryapi.com/api/0.3/?callback=?&cmd=getTrims&model_trim="
-            + trim + "model_doors=" + doors + "model_body=" + body + "model_engine_fuel=" + fuel + "model_drive=" + drive
-        $.get(queryURL)
-            .then(function (response) {
-                console.log(response)
-            })
-    }
+    function trimResults() {
+    var queryURL = "https://www.carqueryapi.com/api/0.3/?callback=?&cmd=getTrims&model_trim=" + trim + 
+    "&model_doors=" + doors + 
+    "&model_body=" + body + 
+    "&model_engine_fuel=" + fuel + 
+    "&model_drive=" + drive
 
-
-    // $.ajax({
-    //     url: queryURL,
-    //     method= "GET"
-    // });
-
-
-
-    var doors = title[1]
-    var body = title[2]
-    var fuel = title[3]
-    var drive = title[4]
-    var trim = title[0]
+  console.log(trimResults);
+    
+  $.ajax({
+    url: queryURL,
+    jsonp: "$jsonp",
+    dataType: "jsonp"
+  }).done(function(data) {
+    console.log("Request received: " + data);
+  });
+    };
+   trimResults(trim, doors, body, fuel, drive); {
+            }
 };
 
 getUserChoice = choice => { // keeping the user choices to a array
@@ -140,4 +141,6 @@ getResults = choiceArr => { // making it pull all the users choices and taking i
 getFirstQuestion(); // adding the button to go to the next question after selected
 $(document).on("click", "#nextBtn", getQuestion);
 
-getcarpixbymodelXML('ford+fiesta', 'car-image-placeholder')
+getcarpixbymodelXML('ford+fiesta', 'car-image-placeholder');
+
+getAPI(getResults);
