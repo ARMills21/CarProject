@@ -81,19 +81,19 @@ function getAPI() {
         "&doors=" + doors +
         "&fuel_type=" + fuel +
         "&drive=" + drive
-
+    console.log(queryURL)
     $.ajax({
         url: encodeURI(queryURL),
         dataType: "jsonp"
     }).done((resp) => {
 
         console.log(resp)
-        const item = resp.Trims
+        const item = resp.Trims[0]
 
         const imgQuery = (item.make_display + '+' + item.model_name).toLowerCase();
         const $img = $('<img>');
-
-        $('.title').text(item.model_make_id + ' ' + item.model_name);
+        console.log(item.make_display + '+' + item.model_name)
+        $('.title').text(item.make_display + ' ' + item.model_name);
         getcarpixbymodelXML(imgQuery, $img);
         $('.image').html($img);
 
