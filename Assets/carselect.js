@@ -12,6 +12,11 @@ var questions = [
     },
 
     {
+        title: "What Make?",
+        choice: ["Chevrolet", "Ford", "Dodge", "Mazda", "Toyota"]
+    },
+
+    {
         title: "What kind of fuel type?",
         choice: ["Electric", "Flex fuel", "Premium Unleaded", "Regular Unleaded", "Diesel"] // premium and regular unleaded is gas 
     },
@@ -74,7 +79,7 @@ getQuestion = event => { // adding a event to the questions so it knows what to 
     getUserChoice(userInput); // to pull the users choices
 
 
-    if (currentQuestion >= 4) { // making it where when the user answers all the questions that it goes to the result page
+    if (currentQuestion >= 5) { // making it where when the user answers all the questions that it goes to the result page
         // getResults(userChoices);
     }
     else { // clearing out what is on the DOM currently
@@ -101,13 +106,15 @@ getAPI = Arr => {
     // This is where we will link the API's and code the ajax
     var  trim = userChoices[0];
     var doors = userChoices[1];
-    var fuel = userChoices[2];
-    var drive = userChoices[3];
+    var make = userChoices[2];
+    var fuel = userChoices[3];
+    var drive = userChoices[4];
 
     for(let i = 0; i < userChoices.length; i++){
     console.log('choice ' + userChoices[i])}
     var queryURL = "https://www.carqueryapi.com/api/0.3/?callback=&cmd=getTrims" +
     "&body=" + trim + 
+    "&make_id" + make +
     "&doors=" + doors + 
     "&fuel_type=" + fuel + 
     "&drive=" + drive

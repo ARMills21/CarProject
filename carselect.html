@@ -14,29 +14,44 @@
 <body>
   
   <div class="container" id="page">
+
+    <section class="hero is-fullheight">
     
-<Section>
-    <div class="container columns is-mobile column is-12 is-flex-mobile">       
-      <h1 class="title is-3" id="title">What type of vehicle are you looking for?</h1>
-  </div>
-</section>
-    
-          
-      <div class="container columns is-mobile">
-        <div class="column is-half is-offset-one-quarter questioncontainer">
-        <form>              
-          <div id="questions"></div>
-          <select name="options" id="choices"></select><br>
+   
+      <section>    
+        <div class="container columns is-mobile is-centered">
+        <div class="column is-three-fifths is-offset-one-fifth is-mobile questioncontainer">                            
+          <form>
+          <div id="questions">          
+          <select name="options" id="choices"></select>
           <button type="submit" id="nextBtn">Next</button>
+          </div>
         </form>
+        </div>
+       </div> 
+       </section>
+                
+       <section>
+        <div class="container columns is-mobile is-centered groupcarimage">
+          <img src="./Assets/cargroup.JPG">      
+        </div>    
+      </section>
+           
+        
+      </div>  
+        </section>
+
 
        
+      <!--moved to results page  
         <div id="results">
           <img style="display: none;" src="" alt="car" id="carsample"> 
-        </div>
+        </div>  -->
 
     </div>
   </div>
+</section>
+
 
     <script src="./Assets/carselect.js"></script>
 
