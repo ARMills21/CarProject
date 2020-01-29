@@ -1,25 +1,29 @@
 var questions = [
 
     {
-        title: "What type of vehicle are you looking for?",
-        choice: ["4dr Hatchback", "Cargo Minivan", "Coup",
-            "Passenger Van", "2dr Hatchback", "Cargo Van", "Crew Cab Pickup", "Regular Cap Pickup",
-            "2dr SUV", "Convertible", "Extended Cab Pickup", "Sedan", "4dr SUV", "Convertible SUV",
-            "Passenger Minivan", "Wagon"]
+        title: "What is the body style of the car?",
+        choice: ["Hatchback", "Sedan", "Coupe", "Convertible",
+            "Pickup", "Van", "Minian", "SUV"]
     },
+
     {
-        title: "What Size of vehicle?",
-        choice: ["Compact", "Midsize", "Large"]
+        title: "How many doors?",
+        choice: ["2", "4"]
+    },
+
+    {
+        title: "What Make?",
+        choice: ["Chevrolet", "Ford", "Dodge", "Mazda", "Toyota"]
     },
 
     {
         title: "What kind of fuel type?",
-        choice: ["Electric", "Hybrid", "Natural gas", "Flex fuel", "Gas", "Diesel"]
+        choice: ["Electric", "Flex fuel", "Premium Unleaded", "Regular Unleaded", "Diesel"] // premium and regular unleaded is gas 
     },
 
     {
         title: "What kind of wheel drive?",
-        choice: ["All wheel drive", "Front wheel drive", "Four wheel drive", "Rear wheel drive"]
+        choice: ["AWD", "Front", "4WD", "Rear"]
     }
 ]
 
@@ -38,77 +42,104 @@ var userChoices = [];
 * </string>
 * If you prefer to use a HTTPS source for the image, then you can simpl
 */
-function getcarpixbymodelXML(model, placeholder = 'carsample') {
+function getcarpixbymodelXML(model, $img) {
     var xmlpull = "http://www.carimagery.com/api.asmx/GetImageUrl?searchTerm=" + model;
     $.get(xmlpull)
         .then(function (response) {
             var xmlparser = new X2JS();
             var carresponse = xmlparser.xml2json(response);
 
-            var $img = $("#"+placeholder);
-
-            if ($img.length) {
-                $img.attr('src', carresponse.string.__text);
-                $img.css('display', 'block');
-            }
-
-
-            // $("#carsample").attr('src', carresponse.string.__text)
-
+            $img.attr('src', carresponse.string.__text);
+            $img.css('display', 'block');
         })
 }
-getcarpixbymodelXML("ford+fiesta", "carsample");
 
 getFirstQuestion = () => {
     const firstChoices = questions[0].choice;
     $("#questions").html(questions[0].title);
+
     for (let i = 0; i < firstChoices.length; i++) {
-        let qOption = $("<option>").text(firstChoices[i]);
+        let qOption = $("<option>");
+        qOption.text(firstChoices[i]);
         qOption.addClass("choices");
         qOption.attr("value", firstChoices[i]);
         $("#choices").append(qOption);
     };
 };
 
-getQuestion = event => {
-    event.preventDefault();
-
-    const userInput = $("#choices option:selected").val();
-    getUserChoice(userInput);
-
-    if (currentQuestion >= 4) {
-        getResults(userChoices);
-    }
-    else {
-        $("#questions").html("");
-        $("#choices").html("");
-
-        let currentChoices = questions[currentQuestion].choice;
-
-        $("#questions").html(questions[currentQuestion].title);
-
-        for (let i = 0; i < currentChoices.length; i++) {
-            let qOption = $("<option>").text(currentChoices[i]);
-            qOption.addClass("choices");
-            qOption.attr("value", currentChoices[i]);
-            $("#choices").append(qOption);
-        }
-        currentQuestion++;
-    }
-}
-
-getAPI = Arr => {
+function getAPI() {
     // This is where we will link the API's and code the ajax
+    var trim = userChoices[0];
+    var doors = userChoices[1];
+    var make = userChoices[2];
+    var fuel = userChoices[3];
+    var drive = userChoices[4];
+
+    var queryURL = "https://www.carqueryapi.com/api/0.3/?callback=&cmd=getTrims" +
+        "&body=" + trim +
+        "&make=" + make +
+        "&doors=" + doors +
+        "&fuel_type=" + fuel +
+        "&drive=" + drive
+
+    $.ajax({
+        url: encodeURI(queryURL),
+        dataType: "jsonp"
+    }).done((resp) => {
+        const cars = resp.Trims
+
+        // const imgQuery = (item.make_display + '+' + item.model_name).toLowerCase();
+        // const $img = $('<img>');
+
+        // $('.title').text(item.make_display + ' ' + item.model_name);
+        // getcarpixbymodelXML(imgQuery, $img);
+        // $('.image').html($img);
+
+        
+
+    })
 }
 
-getUserChoice = choice => {
+getQuestion = event => { // adding a event to the questions so it knows what to do
+    event.preventDefault(); // preventing the choices to be removed when refreshed or changed to a different page
+
+    // adding a bucket for the users choices and the value to be empty so selected is add to value
+    getUserChoice();
+
+    if (currentQuestion > 4) {
+        // making it where when the user answers all the questions that it goes to the result page
+        return getAPI();
+    }
+
+    // clearing out what is on the DOM currently
+    $("#questions").html("");
+    $("#choices").html("");
+
+    let currentChoices = questions[currentQuestion].choice; // setting it to the current question it is on 
+
+    $("#questions").html(questions[currentQuestion].title); // setting it the current question to the DOM
+
+    for (let i = 0; i < currentChoices.length; i++) { // making it do the same as the first question
+        let qOption = $("<option>").text(currentChoices[i]);
+        qOption.addClass("choices");
+        qOption.attr("value", currentChoices[i]);
+        $("#choices").append(qOption);
+    }
+    currentQuestion++; // increments current question so it can go to the next question
+
+    // check if we are in the last question, change the label of the btn to 'send'
+}
+
+function getUserChoice() { // keeping the user choices to a array
+    const choice = $("#choices option:selected").val();
     userChoices.push(choice);
-    console.log(userChoices);
-};
+}
 
-getResults = choiceArr => {
-    window.location.href = "results.html";
-    getAPI(choiceArr);
-};
+// getResults = choiceArr => { // making it pull all the users choices and taking it to the results page
+//     window.location.href = "results.html";
+//     getAPI(choiceArr);
+// };
 
-getFirstQuestion();
+getFirstQuestion(); // adding the button to go to the next question after selected
+$(document).on("click", "#nextBtn", getQuestion);
+
