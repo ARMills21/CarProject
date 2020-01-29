@@ -30,44 +30,6 @@ var questions = [
 var currentQuestion = 1;
 var userChoices = [];
 
-getFirstQuestion = () => { // geting the first question
-    const firstChoices = questions[0].choice; // setting it to the choices array
-    $("#questions").html(questions[0].title); // putting the first question to the DOM
-    for(let i=0;i<firstChoices.length; i++) { // setting the length of the choices
-        let qOption = $("<option>").text(firstChoices[i]); // setting the options tag
-        qOption.addClass("choices"); // adding the class to the choicses
-        qOption.attr("value", firstChoices[i]); // setting the value of the option
-        $("#choices").append(qOption); // putting it on the next line of choices on the DOM
-
-    }
-};
-
-getQuestion = event => { // adding a event to the questions so it knows what to do
-    event.preventDefault(); // preventing the choices to be removed when refreshed or changed to a different page
-
-    const userInput = $("#choices option:selected").val(); // adding a bucket for the users choices and the value to be empty so selected is add to value
-    getUserChoice(userInput); // to pull the users choices
-
-    if(currentQuestion >= 5) { // making it where when the user answers all the questions that it goes to the result page
-        getResults(userChoices);
-    }
-    else { // clearing out what is on the DOM currently
-        $("#questions").html(""); 
-        $("#choices").html("");
-
-        let currentChoices = questions[currentQuestion].choice; // setting it to the current question it is on 
-
-        $("#questions").html(questions[currentQuestion].title); // setting it the current question to the DOM
-
-        for(let i = 0; i<currentChoices.length; i++) { // making it do the same as the first question
-            let qOption = $("<option>").text(currentChoices[i]);
-            qOption.addClass("choices");
-            qOption.attr("value", currentChoices[i]);
-            $("#choices").append(qOption); 
-        }
-        currentQuestion++; // increments current question so it can go to the next question
-    }
-}
     /**
 * $(document).on("click", "#nextBtn", getQuestion);
 * Every programming language that can make a HTTP request and parse XML is a suitable
@@ -91,18 +53,20 @@ function getcarpixbymodelXML(model, $img) {
         })
 }
 
-getFirstQuestion = () => {
-    const firstChoices = questions[0].choice;
-    $("#questions").html(questions[0].title);
-
-    for (let i = 0; i < firstChoices.length; i++) {
+getFirstQuestion = () => { // geting the first question
+    const firstChoices = questions[0].choice; // setting it to the choices array
+    $("#questions").html(questions[0].title); // putting the first question to the DOM
+    
+    for(let i = 0; i < firstChoices.length; i++) { // setting the length of the choices
         let qOption = $("<option>");
-        qOption.text(firstChoices[i]);
-        qOption.addClass("choices");
-        qOption.attr("value", firstChoices[i]);
-        $("#choices").append(qOption);
+        qOption.text(firstChoices[i]); // setting the options tag
+        qOption.addClass("choices"); // adding the class to the choicses
+        qOption.attr("value", firstChoices[i]); // setting the value of the option
+        $("#choices").append(qOption); // putting it on the next line of choices on the DOM
+
     };
 };
+
 
 function getAPI() {
     // This is where we will link the API's and code the ajax
@@ -122,7 +86,9 @@ function getAPI() {
     $.ajax({
         url: encodeURI(queryURL),
         dataType: "jsonp"
-    }).done((resp) => {
+    })
+    
+    .done((resp) => {
         console.log(resp)
         const item = resp.Trims
 
@@ -130,10 +96,10 @@ function getAPI() {
         const $img = $('<img>');
 
         $('.title').text(item.model_make_id + ' ' + item.model_name);
+        
         getcarpixbymodelXML(imgQuery, $img);
+        
         $('.image').html($img);
-
-
 
     })
 }
@@ -163,6 +129,7 @@ getQuestion = event => { // adding a event to the questions so it knows what to 
         qOption.attr("value", currentChoices[i]);
         $("#choices").append(qOption);
     }
+    
     currentQuestion++; // increments current question so it can go to the next question
 
     // check if we are in the last question, change the label of the btn to 'send'
