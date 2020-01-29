@@ -86,20 +86,15 @@ function getAPI() {
         url: encodeURI(queryURL),
         dataType: "jsonp"
     }).done((resp) => {
-
-        console.log(resp)
-        const item = resp.Trims[0]
-
-        const imgQuery = (item.make_display + '+' + item.model_name).toLowerCase();
+        var cars = resp.Trims[0]
+        for(var i = 0; i < resp.Trims.length; i++)
+        console.log(resp.Trims[0])
+        const imgQuery = (cars.make_display + '+' + cars.model_name).toLowerCase();
         const $img = $('<img>');
-        console.log(item.make_display + '+' + item.model_name)
-        $('.title').text(item.make_display + ' ' + item.model_name);
+
+        $('.title').text(cars.make_display + ' ' + cars.model_name);
         getcarpixbymodelXML(imgQuery, $img);
         $('.image').html($img);
-
-
-
-
     })
 }
 
