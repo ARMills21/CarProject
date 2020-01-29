@@ -64,8 +64,10 @@ function getcarpixbymodelXML(model, placeholder) {
 getFirstQuestion = () => {
     const firstChoices = questions[0].choice;
     $("#questions").html(questions[0].title);
+
     for (let i = 0; i < firstChoices.length; i++) {
-        let qOption = $("<option>").text(firstChoices[i]);
+        let qOption = $("<option>");
+        qOption.text(firstChoices[i]);
         qOption.addClass("choices");
         qOption.attr("value", firstChoices[i]);
         $("#choices").append(qOption);
