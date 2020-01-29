@@ -86,6 +86,7 @@ function getAPI() {
         url: encodeURI(queryURL),
         dataType: "jsonp"
     }).done((resp) => {
+
         console.log(resp)
         const item = resp.Trims[0]
 
@@ -95,6 +96,7 @@ function getAPI() {
         $('.title').text(item.make_display + ' ' + item.model_name);
         getcarpixbymodelXML(imgQuery, $img);
         $('.image').html($img);
+
 
 
 
