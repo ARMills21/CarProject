@@ -14,15 +14,12 @@
 </head>
 
 <body>
-
-  <div class="container" id="page">
-
-    <section class="hero is-fullheight">
+  <section class="hero is-fullheight">
 
 
       <section>
-        <div class="container columns is-mobile is-centered">
-          <div class="column is-three-fifths is-offset-one-fifth is-mobile questioncontainer">
+        <div class="container columns is-mobile is-centered" > 
+          <div class="column is-half questioncontainer">
             <form>
               <div id="questions"></div>
               <select name="options" id="choices"></select>
@@ -33,7 +30,7 @@
       </section>
 
       <section >
-        <template>
+        <!-- <template> -->
           <div class="tile is-ancestor is-mobile is-centered" id="resultscontainer">
             <div class="tile is-3 is-parent is-mobile">
               <article class="tile is-child is-mobile box">
@@ -45,24 +42,27 @@
               </article>
             </div>
           </div>
-        </template>
+        <!-- </template> -->
       </section>
 
+      <section class="level" id="resultscontainer">
+        <!-- Left side -->
+        <div class="level-left has-text-centered">
+          <div class="level-item">
+          <img id="results" class="image" img src="./Assets/car3.jpeg"></img>
+          </div>
+      </div>
+      
+       <div class="level-right">
+        <p class="title is-5 has-text-left">
+          <strong>Make/Model of Vehicle</strong> 
+        </p> 
+          <ul class="level-item has-text-left">Test</strong></ul>
+      </div>
+      </section>
 
-
-  </div>
-  </section>
-
-
-
-  <!--moved to results page  
-        <div id="results">
-          <img style="display: none;" src="" alt="car" id="carsample"> 
-        </div>  -->
-
-  </div>
-  </div>
-  </section>
+  
+  </section>  <!--closes hero-->
 
 
   <script src="./Assets/carselect.js"></script>
