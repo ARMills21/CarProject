@@ -75,7 +75,7 @@ getQuestion = event => { // adding a event to the questions so it knows what to 
 
 
     if (currentQuestion >= 4) { // making it where when the user answers all the questions that it goes to the result page
-        getResults(userChoices[i]);
+        // getResults(userChoices);
     }
     else { // clearing out what is on the DOM currently
         $("#questions").html("");
@@ -103,6 +103,7 @@ getAPI = Arr => {
     var doors = userChoices[1];
     var fuel = userChoices[2];
     var drive = userChoices[3];
+
     for(let i = 0; i < userChoices.length; i++){
     console.log('choice ' + userChoices[i])}
     var queryURL = "https://www.carqueryapi.com/api/0.3/?callback=&cmd=getTrims" +
@@ -131,10 +132,10 @@ getUserChoice = choice => { // keeping the user choices to a array
 
 getAPI();
 
-getResults = choiceArr => { // making it pull all the users choices and taking it to the results page
-    window.location.href = "results.html";
-    getAPI(choiceArr);
-};
+// getResults = choiceArr => { // making it pull all the users choices and taking it to the results page
+//     window.location.href = "results.html";
+//     getAPI(choiceArr);
+// };
 
 getFirstQuestion(); // adding the button to go to the next question after selected
 $(document).on("click", "#nextBtn", getQuestion);
