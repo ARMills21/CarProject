@@ -3,7 +3,7 @@ var questions = [
     {
         title: "What is the body style of the car?",
         choice: ["Hatchback", "Sedan", "Coupe", "Convertible",
-            "Pickup", "Van", "Minian", "SUV"]
+            "Pickup", "Van", "Minivan", "SUV"]
     },
 
     {
@@ -116,13 +116,19 @@ function getAPI() {
 
 getQuestion = event => { // adding a event to the questions so it knows what to do
     event.preventDefault(); // preventing the choices to be removed when refreshed or changed to a different page
+    
 
     // adding a bucket for the users choices and the value to be empty so selected is add to value
     getUserChoice();
+   
+   
 
     if (currentQuestion > 4) {
         // making it where when the user answers all the questions that it goes to the result page
+        $("#infobox").show();
         return getAPI();
+        
+       
     }
 
     // clearing out what is on the DOM currently
@@ -156,4 +162,5 @@ function getUserChoice() { // keeping the user choices to a array
 
 getFirstQuestion(); // adding the button to go to the next question after selected
 $(document).on("click", "#nextBtn", getQuestion);
+
 

@@ -133,17 +133,18 @@ color: black;
 padding: 1rem;
 margin: 1rem;
 min-height: 80vh;
-
 }
 
 .box{
  margin: 12px!important;
 }
 
-.tile.is-child{
+#infobox{
   margin: 12px!important;
   display: table;
-  border: solid 1px black
+  border: solid 1px black;
+  display: none; 
+
 }
 
 #resultstitle {
