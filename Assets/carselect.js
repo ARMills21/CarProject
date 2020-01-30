@@ -1,6 +1,11 @@
 var questions = [
 
     {
+        title: "What Make?",
+        choice: ["Chevrolet", "Ford", "Dodge", "Mazda", "Toyota"]
+    },
+
+    {
         title: "What is the body style of the car?",
         choice: ["Hatchback", "Sedan", "Coupe", "Convertible",
             "Pickup", "Van", "Minivan", "SUV"]
@@ -9,11 +14,6 @@ var questions = [
     {
         title: "How many doors?",
         choice: ["2", "4"]
-    },
-
-    {
-        title: "What Make?",
-        choice: ["Chevrolet", "Ford", "Dodge", "Mazda", "Toyota"]
     },
 
     {
@@ -43,7 +43,7 @@ var userChoices = [];
 * If you prefer to use a HTTPS source for the image, then you can simpl
 */
 function getcarpixbymodelXML(model, $img) {
-    var xmlpull = "http://www.carimagery.com/api.asmx/GetImageUrl?searchTerm=" + model;
+    var xmlpull = "//www.carimagery.com/api.asmx/GetImageUrl?searchTerm=" + model;
     $.get(xmlpull)
         .then(function (response) {
             var xmlparser = new X2JS();
@@ -69,9 +69,9 @@ getFirstQuestion = () => {
 
 function getAPI() {
     // This is where we will link the API's and code the ajax
-    var trim = userChoices[0];
-    var doors = userChoices[1];
-    var make = userChoices[2];
+    var trim = userChoices[1];
+    var doors = userChoices[2];
+    var make = userChoices[0];
     var fuel = userChoices[3];
     var drive = userChoices[4];
 
@@ -89,18 +89,18 @@ function getAPI() {
         var cars = resp.Trims[0]
         for(var i = 0; i < resp.Trims.length; i++)
         console.log(resp.Trims[0])
-        const imgQuery = (cars.make_display + '+' + cars.model_name).toLowerCase();
+        const imgQuery = (cars.model_make_display + ' + ' + cars.model_name).toLowerCase();
         const $img = $('<img>');
 
         $('.title').text(cars.make_display + ' ' + cars.model_name);
         getcarpixbymodelXML(imgQuery, $img);
         $('.image').html($img);
 
-        $('.seats').text(cars.model_seats + ' seats');
+        $('.seats').text('Seats: ' + cars.model_seats);
         getcarpixbymodelXML(imgQuery, $img);
         $('.image').html($img);
 
-        $('.doors').text(cars.model_doors + ' doors');
+        $('.doors').text('Doors: ' + cars.model_doors);
         getcarpixbymodelXML(imgQuery, $img);
         $('.image').html($img);
 
