@@ -171,3 +171,19 @@ min-height: 80vh;
   margin-right: auto;
   width: 50%;
 }
+
+.seats{
+  font-size: x-large;
+}
+
+.year{
+  font-size: x-large;
+}
+
+.transmission{
+  font-size: x-large;
+}
+
+.doors{
+  font-size: x-large;
+}
