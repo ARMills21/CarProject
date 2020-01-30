@@ -1,6 +1,11 @@
 var questions = [
 
     {
+        title: "What Make?",
+        choice: ["Chevrolet", "Ford", "Dodge", "Mazda", "Toyota"]
+    },
+    
+    {
         title: "What is the body style of the car?",
         choice: ["Hatchback", "Sedan", "Coupe", "Convertible",
             "Pickup", "Van", "Minian", "SUV"]
@@ -9,11 +14,6 @@ var questions = [
     {
         title: "How many doors?",
         choice: ["2", "4"]
-    },
-
-    {
-        title: "What Make?",
-        choice: ["Chevrolet", "Ford", "Dodge", "Mazda", "Toyota"]
     },
 
     {
