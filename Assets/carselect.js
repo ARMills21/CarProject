@@ -4,7 +4,7 @@ var questions = [
         title: "What Make?",
         choice: ["Chevrolet", "Ford", "Dodge", "Mazda", "Toyota"]
     },
-    
+
     {
         title: "What is the body style of the car?",
         choice: ["Hatchback", "Sedan", "Coupe", "Convertible",
@@ -69,9 +69,9 @@ getFirstQuestion = () => {
 
 function getAPI() {
     // This is where we will link the API's and code the ajax
-    var trim = userChoices[0];
-    var doors = userChoices[1];
-    var make = userChoices[2];
+    var trim = userChoices[1];
+    var doors = userChoices[2];
+    var make = userChoices[0];
     var fuel = userChoices[3];
     var drive = userChoices[4];
 
