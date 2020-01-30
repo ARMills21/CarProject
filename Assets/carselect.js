@@ -95,6 +95,22 @@ function getAPI() {
         $('.title').text(cars.make_display + ' ' + cars.model_name);
         getcarpixbymodelXML(imgQuery, $img);
         $('.image').html($img);
+
+        $('.seats').text(cars.model_seats + ' seats');
+        getcarpixbymodelXML(imgQuery, $img);
+        $('.image').html($img);
+
+        $('.doors').text(cars.model_doors + ' doors');
+        getcarpixbymodelXML(imgQuery, $img);
+        $('.image').html($img);
+
+        $('.transmission').text('Transmission: ' + cars.model_transmission_type);
+        getcarpixbymodelXML(imgQuery, $img);
+        $('.image').html($img);
+
+        $('.year').text('Year: ' + cars.model_year);
+        getcarpixbymodelXML(imgQuery, $img);
+        $('.image').html($img);
     })
 }
 
