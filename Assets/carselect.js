@@ -53,8 +53,10 @@ function getcarpixbymodelXML(model, $img) {
         })
 }
 
-getFirstQuestion = () => { // geting the first question
+function getFirstQuestion() { // geting the first question
+    console.log("hi jared");
     const firstChoices = questions[0].choice; // setting it to the choices array
+
     $("#questions").html(questions[0].title); // putting the first question to the DOM
     
     for(let i = 0; i < firstChoices.length; i++) { // setting the length of the choices
@@ -145,5 +147,7 @@ function getUserChoice() { // keeping the user choices to a array
 //     getAPI(choiceArr);
 // };
 
+console.log("A")
 getFirstQuestion(); // adding the button to go to the next question after selected
+console.log("B")
 $(document).on("click", "#nextBtn", getQuestion);
