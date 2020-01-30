@@ -43,7 +43,7 @@ var userChoices = [];
 * If you prefer to use a HTTPS source for the image, then you can simpl
 */
 function getcarpixbymodelXML(model, $img) {
-    var xmlpull = "http://www.carimagery.com/api.asmx/GetImageUrl?searchTerm=" + model;
+    var xmlpull = "https://www.carimagery.com/api.asmx/GetImageUrl?searchTerm=" + model;
     $.get(xmlpull)
         .then(function (response) {
             var xmlparser = new X2JS();
