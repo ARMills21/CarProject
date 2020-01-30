@@ -142,6 +142,8 @@ min-height: 80vh;
 
 .tile.is-child{
   margin: 12px!important;
+  display: table;
+  border: solid 1px black
 }
 
 #resultstitle {
