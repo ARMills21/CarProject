@@ -89,7 +89,7 @@ function getAPI() {
         var cars = resp.Trims[0]
         for(var i = 0; i < resp.Trims.length; i++)
         console.log(resp.Trims[0])
-        const imgQuery = (cars.make_display + ' + ' + cars.model_name).toLowerCase();
+        const imgQuery = (cars.model_make_display + ' + ' + cars.model_name).toLowerCase();
         const $img = $('<img>');
 
         $('.title').text(cars.make_display + ' ' + cars.model_name);
