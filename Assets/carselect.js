@@ -86,20 +86,31 @@ function getAPI() {
         url: encodeURI(queryURL),
         dataType: "jsonp"
     }).done((resp) => {
-
-        console.log(resp)
-        const item = resp.Trims[0]
-
-        const imgQuery = (item.make_display + '+' + item.model_name).toLowerCase();
+        var cars = resp.Trims[0]
+        for(var i = 0; i < resp.Trims.length; i++)
+        console.log(resp.Trims[0])
+        const imgQuery = (cars.make_display + '+' + cars.model_name).toLowerCase();
         const $img = $('<img>');
-        console.log(item.make_display + '+' + item.model_name)
-        $('.title').text(item.make_display + ' ' + item.model_name);
+
+        $('.title').text(cars.make_display + ' ' + cars.model_name);
         getcarpixbymodelXML(imgQuery, $img);
         $('.image').html($img);
 
+        $('.seats').text(cars.model_seats + ' seats');
+        getcarpixbymodelXML(imgQuery, $img);
+        $('.image').html($img);
 
+        $('.doors').text(cars.model_doors + ' doors');
+        getcarpixbymodelXML(imgQuery, $img);
+        $('.image').html($img);
 
+        $('.transmission').text('Transmission: ' + cars.model_transmission_type);
+        getcarpixbymodelXML(imgQuery, $img);
+        $('.image').html($img);
 
+        $('.year').text('Year: ' + cars.model_year);
+        getcarpixbymodelXML(imgQuery, $img);
+        $('.image').html($img);
     })
 }
 
