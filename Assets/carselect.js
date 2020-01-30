@@ -1,6 +1,11 @@
 var questions = [
 
     {
+        title: "What Make?",
+        choice: ["Chevrolet", "Ford", "Dodge", "Mazda", "Toyota"]
+    },
+    
+    {
         title: "What is the body style of the car?",
         choice: ["Hatchback", "Sedan", "Coupe", "Convertible",
             "Pickup", "Van", "Minian", "SUV"]
@@ -9,11 +14,6 @@ var questions = [
     {
         title: "How many doors?",
         choice: ["2", "4"]
-    },
-
-    {
-        title: "What Make?",
-        choice: ["Chevrolet", "Ford", "Dodge", "Mazda", "Toyota"]
     },
 
     {
@@ -89,18 +89,18 @@ function getAPI() {
         var cars = resp.Trims[0]
         for(var i = 0; i < resp.Trims.length; i++)
         console.log(resp.Trims[0])
-        const imgQuery = (cars.make_display + '+' + cars.model_name).toLowerCase();
+        const imgQuery = (cars.make_display + ' ' + cars.model_name).toLowerCase();
         const $img = $('<img>');
 
         $('.title').text(cars.make_display + ' ' + cars.model_name);
         getcarpixbymodelXML(imgQuery, $img);
         $('.image').html($img);
 
-        $('.seats').text(cars.model_seats + ' seats');
+        $('.seats').text('Seats: ' + cars.model_seats);
         getcarpixbymodelXML(imgQuery, $img);
         $('.image').html($img);
 
-        $('.doors').text(cars.model_doors + ' doors');
+        $('.doors').text('Doors: ' + cars.model_doors);
         getcarpixbymodelXML(imgQuery, $img);
         $('.image').html($img);
 
